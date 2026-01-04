@@ -1,1 +1,13 @@
+// models/Book.js
+const mongoose = require("../db");
+
+const bookSchema = new mongoose.Schema({
+  title: { type: String, required: true, trim: true },
+  author: { type: String, required: true },
+  category: { type: String, required: true },
+  publishedYear: { type: Number, required: true },
+  availableCopies: { type: Number, required: true, min: 0 } // prevents negative stock
+});
+
+module.exports = mongoose.model("Book", bookSchema);
 
